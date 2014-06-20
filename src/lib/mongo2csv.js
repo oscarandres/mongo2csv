@@ -23,8 +23,13 @@ function getHeaders(obj,prefix){
 
 function getDataByHeaders(output){
     process.stdout.write('Writting file...');
-    file        = fs.openSync(output, 'a')
-    fs.writeSync(file,headers.join(';')+'\n');
+    file                = fs.openSync(output, 'a');
+    var headers_line    = headers.join(';')
+            .split('[').join('_')
+            .split(']').join('')
+            .split('\'').join('')
+    ;
+    fs.writeSync(file,headers_line+'\n');
     var value   = null;
     var line    = null;
     data.forEach(
@@ -34,13 +39,14 @@ function getDataByHeaders(output){
                 function(header){
                     try{
                         value   = eval('registry'+header);
+                        value.replace('"','\\"');
                     }catch(err){
                         value   = '';
                     }
                     if(value=="undefined"){
                         value='';
                     }
-                    line.push(value);
+                    line.push('"'+value+'"');
                 }
             );
             fs.writeSync(file,line.join(';')+'\n');

@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type":"git",
+    "type": "git",
     "url": "https://github.com/oscarandres/mongo2csv"
   },
   "keywords": [
@@ -21,11 +21,7 @@
     "csv",
     "mongo to csv"
   ],
-  "author": {
-      "name":"oscarandres",
-      "email":"oscar.andres.monroy@gmail.com",
-      "url":"http://oscarandresmonroy.com"
-      },
+  "author": "oscarandres <oscar.andres.monroy@gmail.com> (http://oscarandresmonroy.com)",
   "bin": {
     "mongo2csv": "./bin/mongo2csv"
   },
